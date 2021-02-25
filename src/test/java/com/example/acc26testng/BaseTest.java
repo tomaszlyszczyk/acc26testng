@@ -18,8 +18,13 @@ import org.testng.annotations.Parameters;
 public class BaseTest {
     //Declare ThreadLocal Driver (ThreadLocalMap) for ThreadSafe Tests
     protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
-    private final ChromeOptions chromeOptions = new ChromeOptions();
     private final FirefoxOptions firefoxOptions = new FirefoxOptions();
+
+    public ChromeOptions setupChromeOptions() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("window-position=2000,0");
+        return options;
+    }
 
     @BeforeMethod
     @Parameters(value={"browser"})
@@ -27,8 +32,8 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
         if (browser.equals("chrome")) {
-//            driver.set(new ChromeDriver());
-            driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions));
+//            driver.set(new ChromeDriver(setupChromeOptions()));
+            driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), setupChromeOptions()));
         } else if (browser.equals("firefox")) {
             driver.set(new FirefoxDriver());
 //            driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions));
