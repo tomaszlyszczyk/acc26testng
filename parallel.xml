@@ -1,0 +1,14 @@
+<suite name="Suite" parallel="methods" thread-count="8" >
+    <test name="OnChrome" group-by-instances="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.example.acc26testng.AniaGotujeTests" />
+        </classes>
+    </test>
+<!--    <test name="OnFirefox" group-by-instances="true">-->
+<!--        <parameter name="browser" value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name="com.example.acc26testng.AniaGotujeTests" />-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>
