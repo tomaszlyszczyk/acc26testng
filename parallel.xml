@@ -1,4 +1,4 @@
-<suite name="Suite" parallel="methods" thread-count="8" >
+<suite name="Suite" parallel="methods" thread-count="5" >
     <test name="OnChrome" group-by-instances="true">
         <parameter name="browser" value="chrome"/>
         <classes>

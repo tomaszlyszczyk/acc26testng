@@ -7,6 +7,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -31,12 +32,13 @@ public class BaseTest {
     public void setup (String browser) throws MalformedURLException {
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.edgedriver().setup();
         if (browser.equals("chrome")) {
 //            driver.set(new ChromeDriver(setupChromeOptions()));
             driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), setupChromeOptions()));
         } else if (browser.equals("firefox")) {
-            driver.set(new FirefoxDriver());
-//            driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions));
+//            driver.set(new FirefoxDriver());
+            driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions));
         }
     }
 
